@@ -1,24 +1,29 @@
 workflows:
-  android-build:
-    name: Coin Galaxy Android Build
+  android-workflow:
+    name: Coin Galaxy Android APK
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
+      groups:
+        - supabase_keys # Ensure these match your Variable Group name in Codemagic UI
       node: latest
       java: 17
-      groups:
-        - google_play_credentials # If you have signing keys
     scripts:
       - name: Install dependencies
         script: npm install
-      - name: Build Web App
+      - name: Build Web Assets
         script: npm run build
-      - name: Capacitor Sync
+      - name: Sync Capacitor
         script: |
           npx cap sync android
       - name: Build Android APK
         script: |
           cd android
+          chmod +x gradlew
           ./gradlew assembleRelease
     artifacts:
       - android/app/build/outputs/apk/release/*.apk
+    publishing:
+      email:
+        recipients:
+          - sahilmeshram1917@gmail.com
