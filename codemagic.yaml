@@ -6,7 +6,7 @@ workflows:
     environment:
       groups:
         - supabase_keys
-        android_signing 
+        - android_signing 
       node: latest
       java: 21
     scripts:
