@@ -7,7 +7,7 @@ workflows:
       groups:
         - supabase_keys # Ensure these match your Variable Group name in Codemagic UI
       node: latest
-      java: 17
+      java: 21
     scripts:
       - name: Install dependencies
         script: npm install
