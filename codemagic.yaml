@@ -5,7 +5,8 @@ workflows:
     instance_type: mac_mini_m2
     environment:
       groups:
-        - supabase_keys # Ensure these match your Variable Group name in Codemagic UI
+        - supabase_keys
+        android_signing 
       node: latest
       java: 21
     scripts:
