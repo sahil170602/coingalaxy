@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-galaxy-dark: #0B0E14;
+  --color-nebula-purple: #7E22CE;
+  --color-star-blue: #3B82F6;
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  @apply bg-galaxy-dark text-white min-h-screen;
+  background-image: radial-gradient(circle at top right, var(--color-nebula-purple), transparent 40%),
+                    radial-gradient(circle at bottom left, var(--color-star-blue), transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Reusable Glassmorphism Utility */
+.glass-panel {
+  @apply bg-glass-bg border border-glass-border backdrop-blur-md rounded-2xl shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+}
+html, body {
+  /* Prevents the whole page from bouncing when you reach the top/bottom */
+  overscroll-behavior: none;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Custom scrollbar hide for a cleaner 'App' look */
+::-webkit-scrollbar {
+  display: none;
+}
